@@ -1,0 +1,21 @@
+#include<iostream>
+#include<iomanip>
+#include<string>
+using namespace std;
+int main()
+{
+string s1,s2;
+cin >> s1;
+cin >> s2;
+int a=s1.lenght();
+int b=s2.lenght();
+if (a>b)
+{
+cout << setw(a+b)<< setfill('*') << left << s1;
+}
+else
+{
+cout << setw(a+b)<< setfill('*') << left << s2;
+} 
+return 0;
+}
