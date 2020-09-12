@@ -1,0 +1,67 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+//Объединить 2 массива. Ширина поля - размер 1 + размер 2 массива. Пробелы заполнить *.
+
+void create(int arr[], int n)
+{
+	cout << "Enter the numbers of your array: " << flush;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> arr[i];
+	}
+}
+
+void output(int arr[], int n)
+{
+	cout << "Your array: " << flush;
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << " " << flush;
+	}
+	cout << endl;
+}
+
+int main()
+{
+	const int n1 = 5, n2 = 3;
+	int arr1[n1], arr2[n2];
+	create(arr1, n1);
+	output(arr1, n1);
+	create(arr2, n2);
+	output(arr2, n2);
+
+	int arrRes[n1 + n2], nRes = n1 + n2, t = 0;
+	for (t; t < n1; t++)
+	{
+		arrRes[t] = arr1[t];
+	}
+	for (int i = 0; i < n2; i++)
+	{
+		arrRes[t] = arr2[i];
+		t++;
+	}
+
+	for (int i = 0; i < nRes; i++)
+	{
+		for (int j = i + 1; j < nRes; j++)
+		{
+			if (arrRes[j] == arrRes[i])
+			{
+				for (int g = j; g < nRes - 1; g++)
+				{
+					arrRes[g] = arrRes[g + 1];
+				}
+				nRes--;
+				j--;
+			}
+		}
+	}
+
+	cout << setfill('*') << setw((n1 + n2) * 2);
+	output(arrRes, nRes);
+
+	return 0;
+}
